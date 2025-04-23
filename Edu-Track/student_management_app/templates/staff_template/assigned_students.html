@@ -1,0 +1,45 @@
+<!-- assigned_students.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h3>Assigned Students</h3>
+
+{% if messages %}
+    <div class="alert alert-info">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if assigned_students %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Semester</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in assigned_students %}
+            <tr>
+                <td>{{ student.admin.id }}</td>
+                <td>{{ student.admin.first_name }} {{ student.admin.last_name }}</td>
+                <td>{{ student.admin.email }}</td>
+                <td>{{ student.gender }}</td>
+                <td>{{ student.course_id.course_name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No students assigned to you as a proctor.</p>
+{% endif %}
+{% endblock %}
+
+
+

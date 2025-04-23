@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <h2>Proctor Details</h2>
+  {% if proctor %}
+    <p><strong>Name:</strong> {{ proctor.admin.first_name }} {{ proctor.admin.last_name }}</p>
+    <p><strong>Email:</strong> {{ proctor.admin.email }}</p>
+    <p><strong>Address:</strong> {{ proctor.address }}</p>
+  {% else %}
+    <p>No proctor assigned.</p>
+  {% endif %}
+  <a href="{% url 'student_home' %}" class="btn btn-primary">Back to Home</a>
+</div>
+{% endblock %}
